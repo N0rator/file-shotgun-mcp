@@ -13,6 +13,9 @@ FileShotgunMcpServer follows a simple, focused architecture designed around the 
 │  │ Framework   ├─┤           │  │
 │  │             │ │ReadMemory │  │
 │  └─────────────┘ │   Bank    │  │
+│                  │           │  │
+│                  │UpdateMemory│  │
+│                  │   Bank    │  │
 │                  └───────────┘  │
 │                                 │
 └─────────────────────────────────┘
@@ -57,7 +60,7 @@ FileShotgunMcpServer follows a simple, focused architecture designed around the 
 ## Component Relationships
 - **Host**: The top-level container that manages the application lifecycle.
 - **MCP Server**: Handles MCP protocol communication.
-- **Tools**: Implement specific functionality (currently just ReadMemoryBank).
+- **Tools**: Implement specific functionality (ReadMemoryBank and UpdateMemoryBank).
 - **Logging**: Provides error reporting through stderr.
 
 ## Critical Implementation Paths

@@ -1,28 +1,41 @@
 # Active Context: FileShotgunMcpServer
 
 ## Current Work Focus
-The current focus is on establishing the core functionality of the FileShotgunMcpServer as an MCP server that provides memory bank reading capabilities. The initial implementation includes a single tool, ReadMemoryBank, which reads all markdown files from a specified directory and returns them as a structured text payload.
+The current focus is on establishing the core functionality of the FileShotgunMcpServer as an MCP server that provides memory bank reading and updating capabilities. The implementation includes two tools: ReadMemoryBank, which reads all markdown files from a specified directory and returns them as a structured text payload, and UpdateMemoryBank, which allows updating multiple memory bank files in a single operation.
 
 ## Recent Changes
 - Initial project setup with .NET 9.0
 - Implementation of the MCP server using the ModelContextProtocol library
 - Creation of the ReadMemoryBank tool
+- Creation of the UpdateMemoryBank tool with line ending normalization
 - Configuration of logging to stderr
 - Setup of standard I/O for server transport
+- Updated documentation to reflect the current state of the project
+- Fixed repository URL in documentation
 
 ## Next Steps
-1. **Testing**: Implement comprehensive tests for the ReadMemoryBank tool
-2. **Documentation**: Enhance documentation with usage examples
+1. **Testing**: Implement comprehensive tests for both ReadMemoryBank and UpdateMemoryBank tools
+2. **Documentation**: Enhance documentation with usage examples for both tools
 3. **Error Handling**: Improve error handling for file access issues
-4. **Performance Optimization**: Optimize file reading for large memory banks
+4. **Performance Optimization**: Optimize file reading and updating for large memory banks
 5. **Additional Tools**: Consider adding more memory bank-related tools
 
 ## Active Decisions and Considerations
 
 ### Tool Implementation
-- **Decision**: Implement ReadMemoryBank as a static method with attributes
+- **Decision**: Implement ReadMemoryBank and UpdateMemoryBank as static methods with attributes
 - **Status**: Implemented
 - **Considerations**: This approach provides a clean, declarative way to define tool capabilities and simplifies registration
+
+### UpdateMemoryBank Implementation
+- **Decision**: Use a structured input object for update operations
+- **Status**: Implemented
+- **Considerations**: This approach provides a clear way to specify multiple file updates in a single operation
+
+### Line Ending Normalization
+- **Decision**: Normalize line endings in the oldValue and newValue strings
+- **Status**: Implemented
+- **Considerations**: This ensures consistent replacements regardless of how the strings are formatted
 
 ### Delimiter Format
 - **Decision**: Use `*#*#*[filepath]*#*#*begin*#*#*` and `*#*#*end*#*#*` as delimiters

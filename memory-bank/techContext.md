@@ -50,7 +50,9 @@
 - **Microsoft.Extensions.Logging**: Required for logging
 
 ### Internal Dependencies
-- **Tool.cs**: Implements the ReadMemoryBank tool
+- **ReadMemoryBankTool.cs**: Implements the ReadMemoryBank tool
+- **UpdateMemoryBankTool.cs**: Implements the UpdateMemoryBank tool
+- **ToolsAggregation.cs**: Defines the tool aggregation class
 - **Program.cs**: Configures and starts the MCP server
 
 ## Tool Usage Patterns
@@ -63,6 +65,35 @@
   ```csharp
   string memoryBankContent = ReadMemoryBank("/path/to/memory-bank");
   // Parse the content by splitting on delimiters
+  ```
+
+### UpdateMemoryBank Tool
+- **Input**: Two parameters:
+  - Memory bank folder path (string)
+  - Array of file updates, each with:
+    - File name
+    - Array of operations (old value, new value pairs)
+- **Process**: Updates specified files by replacing old values with new values
+- **Output**: Returns the updated memory bank content in the same format as ReadMemoryBank
+- **Line Ending Normalization**: Automatically normalizes line endings in the oldValue and newValue strings to match the platform's line endings
+- **Usage Pattern**:
+  ```csharp
+  var filesUpdates = new[]
+  {
+      new FileUpdateScenario
+      {
+          FileName = "file.md",
+          Operations = new[]
+          {
+              new ReplaceOperation
+              {
+                  oldValue = "old content",
+                  newValue = "new content"
+              }
+          }
+      }
+  };
+  string updatedContent = UpdateMemoryBank("/path/to/memory-bank", filesUpdates);
   ```
 
 ### Delimiter Format

@@ -3,7 +3,9 @@
 ## What Works
 - ✅ Basic MCP server setup with standard I/O transport
 - ✅ ReadMemoryBank tool implementation
+- ✅ UpdateMemoryBank tool implementation
 - ✅ File reading with structured output format
+- ✅ File updating with structured input format
 - ✅ Markdown file filtering
 - ✅ Error logging to stderr
 
@@ -12,10 +14,10 @@
 - ⏳ Enhanced error handling for edge cases
 - ⏳ Performance optimizations for large memory banks
 - ⏳ Additional memory bank tools (potential future enhancement)
-- ⏳ Documentation improvements
+- ⏳ Documentation improvements for both tools
 
 ## Current Status
-The project is in a functional state with the core ReadMemoryBank tool implemented. The server can be built, published, and integrated with Cline AI assistant through the MCP configuration. The current implementation meets the basic requirements but could benefit from additional testing, error handling, and documentation.
+The project is in a functional state with both ReadMemoryBank and UpdateMemoryBank tools implemented. The UpdateMemoryBank tool includes line ending normalization for consistent replacements. The server can be built, published, and integrated with Cline AI assistant through the MCP configuration. The current implementation meets the basic requirements but could benefit from additional testing, error handling, and documentation.
 
 ## Known Issues
 - No specific error handling for invalid directory paths
@@ -33,21 +35,23 @@ The project started with the goal of providing a simple way to access memory ban
    - Decision: Use ModelContextProtocol library for MCP server implementation
    - Outcome: Successfully implemented basic functionality
 
-2. **Current State**: Functional tool with basic error handling
+2. **Current State**: Functional tool with basic error handling and line ending normalization
    - Decision: Use standard I/O for transport
    - Outcome: Simple integration with AI assistants
+   - Enhancement: Added line ending normalization to ensure consistent replacements
 
 ### Future Direction
 The project will focus on:
 1. Improving robustness through better error handling
 2. Enhancing performance for large memory banks
-3. Adding more comprehensive documentation
+3. Adding more comprehensive documentation for both tools
 4. Potentially adding more memory bank-related tools
 
 ## Milestones
 - [x] Initial project setup
 - [x] MCP server implementation
 - [x] ReadMemoryBank tool implementation
+- [x] UpdateMemoryBank tool implementation
 - [ ] Comprehensive test suite
 - [ ] Enhanced error handling
 - [ ] Performance optimizations

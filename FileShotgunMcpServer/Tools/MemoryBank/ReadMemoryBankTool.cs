@@ -4,12 +4,11 @@ using System.Text;
 
 namespace FileShotgunMcpServer.Tools.MemoryBank;
 
-[McpServerToolType]
-public static class Tool
+public static partial class MemoryBankToolsAggregation
 {
-    [McpServerTool, Description("Explodes an entire memory-bank into a single, well‑structured text payload.")]
+    [McpServerTool, Description(Constants.ToolsDescriptions.ReadMemoryBank)]
     public static string ReadMemoryBank(
-        [Description("An absolute path to memory-bank folder")] string memoryBankFolderPath)
+        [Description(Constants.ToolsArgumentDescriptions.MemoryBankFolderPath)] string memoryBankFolderPath)
     {
         var files = Directory.GetFiles(memoryBankFolderPath, "*.md");
 

@@ -21,6 +21,7 @@ This server simplifies the process of accessing memory bank files for AI assista
 ## ✨ Features
 
 - 📚 **Memory Bank Reading**: Read all markdown files from a memory bank directory
+- 📝 **Memory Bank Updating**: Update multiple memory bank files in a single operation
 - 🔄 **Structured Output**: Return memory bank content with clear delimiters
 - 🔌 **MCP Integration**: Seamlessly integrate with AI assistants through the Model Context Protocol
 - 🚀 **Standard I/O Transport**: Simple communication through standard input/output
@@ -34,8 +35,8 @@ This server simplifies the process of accessing memory bank files for AI assista
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/S-Kudravets-fdb/file-shotgun-mcp.git
-   cd FileShotgunMcpServer
+   git clone https://github.com/N0rator/file-shotgun-mcp.git
+   cd file-shotgun-mcp
    ```
 
 2. **Publish the solution**
@@ -68,7 +69,7 @@ This server simplifies the process of accessing memory bank files for AI assista
 
 ## 🔍 Usage
 
-Once configured, the FileShotgunMcpServer provides the following tool:
+Once configured, the FileShotgunMcpServer provides the following tools:
 
 ### ReadMemoryBank
 
@@ -89,6 +90,42 @@ This is the content of file 2.
 *#*#*end*#*#*
 ```
 
+### UpdateMemoryBank
+
+Updates multiple memory bank files in a single operation and returns the updated memory bank content as a structured text payload.
+
+**Input Parameters:**
+- `memoryBankUpdateScenario`: An object containing:
+  - `memoryBankFolderPath`: An absolute path to the memory bank folder
+  - `fileUpdates`: An array of file updates, each with:
+    - `fileName`: The name of the file to update
+    - `operations`: An array of operations, each with:
+      - `oldValue`: The content to replace
+      - `newValue`: The new content
+
+**Example Input:**
+```json
+{
+  "memoryBankFolderPath": "/path/to/memory-bank",
+  "filesUpdates": [
+    {
+      "fileName": "file1.md",
+      "operations": [
+        {
+          "oldValue": "# Old Title",
+          "newValue": "# New Title"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Example Output:**
+Same format as ReadMemoryBank, but with the updated content.
+
+**Note:** The tool automatically normalizes line endings in the oldValue and newValue strings to match the platform's line endings, ensuring consistent replacements regardless of how the strings are formatted.
+
 ### ⚙️ Best Practices for AI Integration
 
 <div align="center">
@@ -104,9 +141,10 @@ Create a file named `file-shotgun.md` with the following content:
 ```markdown
 # Strict rules
 * When you want to read all of memory-bank files or the whole memory-bank, use "read_memory_bank" tool of "FileShotgunMcpServer" mcp server.
+* When you want to update multiple memory-bank files, use "update_memory_bank" tool of "FileShotgunMcpServer" mcp server.
 ```
 
-This rule ensures that AI assistants will use the FileShotgunMcpServer's specialized tool for memory bank operations, providing better performance and consistent formatting of memory bank content.
+This rule ensures that AI assistants will use the FileShotgunMcpServer's specialized tools for memory bank operations, providing better performance and consistent formatting of memory bank content.
 
 ## 🤝 Contributing
 

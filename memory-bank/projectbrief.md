@@ -6,14 +6,15 @@ FileShotgunMcpServer is a .NET application that implements a Model Context Proto
 ## Core Requirements
 1. Implement an MCP server that can be integrated with Cline AI assistant
 2. Provide a tool for reading memory bank files efficiently
-3. Return memory bank content in a structured format that can be easily parsed
-4. Support standard I/O for server transport
-5. Maintain minimal dependencies and a lightweight footprint
+3. Provide a tool for updating multiple memory bank files in a single operation
+4. Return memory bank content in a structured format that can be easily parsed
+5. Support standard I/O for server transport
+6. Maintain minimal dependencies and a lightweight footprint
 
 ## Goals
-- Simplify the process of reading memory bank files for AI assistants
+- Simplify the process of reading and updating memory bank files for AI assistants
 - Provide a consistent format for memory bank content
-- Enable efficient access to memory bank information
+- Enable efficient access to and modification of memory bank information
 - Support the memory bank pattern for maintaining context between AI sessions
 - Facilitate better context management for AI assistants
 
